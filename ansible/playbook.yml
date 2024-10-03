@@ -1,0 +1,34 @@
+---
+- hosts: build_servers 
+  become: yes 
+  tasks:
+#updating default repository
+    - name: Update the package repository
+      apt:
+            update_cache: yes 
+# Install Java
+    - name: Install Java
+      apt:
+         name: openjdk-11-jdk
+         state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Java (RHEL/CentOS)
+      yum:
+          name: java-11-openjdk
+          state: present
+      when: ansible_os_family == "RedHat"
+
+# Install Maven
+    - name: Install Maven
+      apt:
+          name: maven
+          state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Maven (RHEL/CentOS)
+      yum:
+          name: maven
+          state: present
+      when: ansible_os_family == "RedHat"
+

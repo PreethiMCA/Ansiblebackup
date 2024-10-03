@@ -1,0 +1,13 @@
+---
+- name: Ensure Nginx is installed
+  apt:
+    name: nginx
+    state: present
+  notify: Restart Nginx  # Notify the handler to restart Nginx if this task changes something
+
+- name: Ensure Nginx is running
+  service:
+    name: nginx
+    state: started
+    enabled: true
+

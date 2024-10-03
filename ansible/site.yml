@@ -1,0 +1,6 @@
+---
+- hosts: build_servers
+  become: true  # Use 'become' if you need to run as sudo
+  roles:
+    - nginx
+
