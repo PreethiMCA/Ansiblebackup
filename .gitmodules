@@ -1,0 +1,3 @@
+[submodule "addressbook-cicd-projects"]
+	path = addressbook-cicd-projects
+	url = https://github.com/PreethiMCA/Ansiblebackup.git
